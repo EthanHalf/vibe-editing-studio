@@ -39,3 +39,19 @@ Run through this list on every clip and cover:
    folder only.
 
 If any check fails, fix and re-render before showing the result.
+
+## Platform crop and overlay safety
+
+- Vertical covers: the headline must survive a centered 1:1 crop (feed grids
+  show only the middle square). The builder places it there automatically.
+- Text never covers the speaker's eyes or mouth. Supporting text and design
+  cards sit beside or below the face.
+- Captions are natural phrase chunks beside/below the face - no caption
+  background boxes and no progress bars by default. Both can be added per
+  brand preset if a creator wants them.
+
+## Claims and sound
+
+- If a video says a tool did something, show that literal screen recording -
+  no stand-in footage for product claims.
+- No background music under talking-head content by default.

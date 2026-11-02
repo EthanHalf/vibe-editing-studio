@@ -162,20 +162,26 @@ def compose(preset, image_path, headline, accent, fmt, cutout=False):
     subject = subject.convert("RGBA")
     sz = preset["subject"]
     if fmt == "vertical":
-        target_h = int(H * sz.get("height_fraction_vertical", 0.78))
-        scale = target_h / subject.height
-        if subject.width * scale < W:  # never narrower than the canvas
-            scale = W / subject.width
+        desired_h = int(H * sz.get("height_fraction_vertical", 0.58))
+        subject_top = H - desired_h
+        # scale for the desired height, but never narrower than the canvas;
+        # if width forces a taller image keep the TOP (the face) and let the
+        # bottom overflow get cropped - full-bleed without covering text
+        scale = max(desired_h / subject.height, W / subject.width)
         s = subject.resize((int(subject.width * scale), int(subject.height * scale)))
+        if s.height > desired_h:
+            s = s.crop((0, 0, s.width, desired_h))
         x = (W - s.width) // 2
-        y = H - s.height  # full-bleed to the bottom edge
+        y = subject_top
         canvas.alpha_composite(s, (x, y))
-        # headline zone: top of frame, always ending above the subject so
-        # text never sits over the face; bottom app-UI strip stays clear
+        # headline zone: inside the centered 1:1 crop (feed grids crop to it),
+        # always ending above the subject so text never sits over the face;
+        # bottom app-UI strip stays clear
         ui = preset["safe_zones"]["vertical"]
         bottom_ui = int(H * (1 - ui.get("bottom_ui_fraction", 0.15)))
-        hz_bottom = max(min(y - 40, bottom_ui), int(H * 0.18))
-        hz = (int(W * 0.06), 60, int(W * 0.94), hz_bottom)
+        top_sq = (H - W) // 2
+        hz_bottom = max(min(y - 40, bottom_ui), top_sq + int(W * 0.20))
+        hz = (int(W * 0.06), top_sq, int(W * 0.94), hz_bottom)
         overlay_gradient(canvas, (0, 0, W, hz[3] + 160))
         draw_headline(canvas, preset, hz, headline, accent, align="center")
     else:  # youtube

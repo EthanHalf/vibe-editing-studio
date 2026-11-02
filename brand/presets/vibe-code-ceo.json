@@ -9,7 +9,7 @@
     "max_size": 160,
     "max_lines": 4
   },
-  "subject": { "height_fraction_vertical": 0.62, "height_fraction_youtube": 0.95 },
+  "subject": { "height_fraction_vertical": 0.58, "height_fraction_youtube": 0.95 },
   "safe_zones": {
     "vertical": { "bottom_ui_fraction": 0.15, "center_square": true },
     "youtube": { "margin_fraction": 0.06 }
