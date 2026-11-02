@@ -15,8 +15,8 @@ Two jobs, one kit:
 
 ## What you need
 
-- A Mac (tested) or Linux machine, with [Claude Code](https://claude.com/product/claude-code).
-- Homebrew (macOS) so setup can install ffmpeg and friends.
+- A Mac or Linux machine, with [Claude Code](https://claude.com/product/claude-code).
+- Homebrew (macOS) so setup can install ffmpeg and friends; on Linux use your package manager.
 - Your own keys for anything that costs money. Nothing is uploaded anywhere;
   keys stay in a local file on your machine.
 
@@ -81,8 +81,12 @@ Always look at the rendered cover and the edited clip before posting. Your
 originals are never modified: the kit only reads them and writes new files
 to an output folder you choose.
 
-Tested on macOS (Apple Silicon). Linux should work; Windows is untested -
-use WSL and expect rough edges.
+Test status: the thumbnail builder and sample project were run and
+visually checked on Linux. The editing pipeline comes from the upstream
+Vibe Editing plugin (its docs target macOS via Homebrew); a clean-install
+of this full kit on a fresh Mac has not been run yet - treat the first
+local setup as the real test. Windows is untested - use WSL and expect
+rough edges.
 
 ## License and credit
 
