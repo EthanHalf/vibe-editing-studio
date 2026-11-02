@@ -11,3 +11,9 @@ The thumbnail/cover builder in `skills/thumbnail/`, the brand presets in
 
 Montserrat font files in `fonts/` are by the Montserrat Project Authors and
 are used under the SIL Open Font License 1.1 (see `fonts/OFL.txt`).
+
+The caption engine bundled in `plugins/vibe-editing/skills/caption-clips/fonts/`
+ships open-source font files (Montserrat, Anton, Barlow, Bebas Neue and
+others); their embedded license tables identify the SIL Open Font License
+1.1, and a copy of that license is included alongside them as `OFL.txt` in
+each fonts directory.

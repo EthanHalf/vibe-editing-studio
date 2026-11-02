@@ -81,12 +81,27 @@ Always look at the rendered cover and the edited clip before posting. Your
 originals are never modified: the kit only reads them and writes new files
 to an output folder you choose.
 
-Test status: the thumbnail builder and sample project were run and
-visually checked on Linux. The editing pipeline comes from the upstream
-Vibe Editing plugin (its docs target macOS via Homebrew); a clean-install
-of this full kit on a fresh Mac has not been run yet - treat the first
-local setup as the real test. Windows is untested - use WSL and expect
-rough edges.
+Test status (verified in this repo's sandbox, Linux):
+
+- Thumbnail/cover builder: tested end-to-end, including `--cutout`
+  background removal on a real (public-domain) photo, frame extraction
+  from video, both brand presets, both output sizes, and the error path.
+  Final renders visually checked.
+- Caption pipeline: tested end-to-end offline - local faster-whisper
+  transcription (no API key), text normalization, style stream, burn,
+  and the caption/audio sync gate all ran and passed on a sample clip,
+  in both the default word-by-word look and the phrase-chunk preset
+  (`brand/presets/captions-phrase.json`).
+- The all-in-one `spice_caption.py` wrapper stops without an
+  AssemblyAI or Groq key; the key-free route is the documented manual
+  chain (local whisper -> spice_format -> generate_spice), which is what
+  was tested.
+- Not yet run: a clean install on a fresh machine, macOS (upstream docs
+  target macOS via Homebrew), the full `/edit` orchestration with
+  silence cutting and reframing, and the `caption_sync_gate.py --clip`
+  self-check, which expects a `whisper-cli` binary it does not ship
+  (the `--audio-words` route works). Treat the first local setup on your
+  Mac as the real test. Windows is untested - use WSL.
 
 ## License and credit
 

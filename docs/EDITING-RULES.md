@@ -49,6 +49,10 @@ If any check fails, fix and re-render before showing the result.
 - Captions are natural phrase chunks beside/below the face - no caption
   background boxes and no progress bars by default. Both can be added per
   brand preset if a creator wants them.
+- The kit's caption engine defaults to rapid word-by-word pops. For the
+  phrase-chunk look, render with `brand/presets/captions-phrase.json`:
+
+  `python3 plugins/vibe-editing/skills/caption-clips/scripts/generate_spice.py <spice_norm.json> --preset brand/presets/captions-phrase.json --style <director_stream.json> --out subs.ass --burn <clip.mp4> --burn-out <final.mp4>`
 
 ## Claims and sound
 
