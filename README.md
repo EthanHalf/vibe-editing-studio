@@ -33,7 +33,7 @@ The kit itself is free and open source (MIT). Running it is not fully free:
 ## Quickstart
 
 ```bash
-git clone <this repo> && cd vibe-code-studio
+git clone https://github.com/EthanHalf/vibe-code-studio.git && cd vibe-code-studio
 ./setup.sh                        # installs dependencies, runs a health check
 ```
 
