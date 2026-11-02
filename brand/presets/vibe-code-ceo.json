@@ -1,0 +1,17 @@
+{
+  "name": "vibe-code-ceo",
+  "description": "Example preset for Ethan's Vibe Code CEO brand: black background, white Montserrat ExtraBold headline, one gold #FFD60A accent word, face full-bleed.",
+  "background": { "gradient": ["#0A0A0A", "#000000"] },
+  "headline": {
+    "font": "fonts/Montserrat-ExtraBold.ttf",
+    "color": "#FFFFFF",
+    "accent_color": "#FFD60A",
+    "max_size": 160,
+    "max_lines": 4
+  },
+  "subject": { "height_fraction_vertical": 0.62, "height_fraction_youtube": 0.95 },
+  "safe_zones": {
+    "vertical": { "bottom_ui_fraction": 0.15, "center_square": true },
+    "youtube": { "margin_fraction": 0.06 }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "default",
+  "description": "Generic starter look: dark background, white Montserrat headline, one blue accent word.",
+  "background": { "gradient": ["#111114", "#000000"] },
+  "headline": {
+    "font": "fonts/Montserrat-ExtraBold.ttf",
+    "color": "#FFFFFF",
+    "accent_color": "#4DA3FF",
+    "max_size": 150,
+    "max_lines": 4
+  },
+  "subject": { "height_fraction_vertical": 0.62, "height_fraction_youtube": 0.92 },
+  "safe_zones": {
+    "vertical": { "bottom_ui_fraction": 0.15, "center_square": true },
+    "youtube": { "margin_fraction": 0.06 }
+  }
+}

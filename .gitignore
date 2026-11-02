@@ -1,0 +1,34 @@
+# Never ship test/user output or build cruft
+_runs/
+_TEST_OUTPUT/
+*_OUTPUT/
+out/
+**/00_SOURCE/
+**/10_WORK/
+**/20_DELIVER/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Delivery credentials, private routes and presigned upload receipts stay local
+**/credentials.json
+**/token.json
+**/routes.json
+**/*.ledger.json
+**/*.ledger.json.lock
+**/*.pem
+
+# Local setup state and credentials (templates remain tracked)
+.env
+.env.*
+!.env.example
+**/config/keys.env
+**/youtube_client_secret*.json
+**/youtube_token*.json
+**/client_secret*.json
+.vibe-editing/
+sample/out/
+sample/sample-clip.mp4
+sample/frame.png
+covers/
