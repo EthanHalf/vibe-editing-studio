@@ -15,11 +15,17 @@ plain words and offer the exact install command for each missing piece
 
 Ask which transcription path they want:
 
-- **AssemblyAI** (default, paid pay-as-you-go): they paste their key; save
-  it with `python3 plugins/vibe-editing/onboard.py set ASSEMBLYAI_API_KEY`.
-  Tell them this costs money per minute of audio.
-- **Local fallback** (free, slower): no key needed; uses faster-whisper
-  already in requirements.
+- **Local Whisper** (free, offline, no account): uses faster-whisper from
+  requirements. The tested command is `bin/caption-local in.mp4 out.mp4`
+  (add `--preset brand/presets/captions-phrase.json` for phrase-chunk
+  captions). First run downloads the model (~460 MB).
+- **AssemblyAI** (paid pay-as-you-go): the upstream default ingest and the
+  only key the one-command `spice_caption.py` wrapper accepts; save it with
+  `python3 plugins/vibe-editing/onboard.py set ASSEMBLYAI_API_KEY`. Tell
+  them this costs money per minute of audio. Not needed for the local path.
+
+Note: `doctor.py` marks AssemblyAI missing because it checks the upstream
+default path; the local path needs only the Python requirements.
 
 Never print a key back. Never write keys anywhere except the kit's private
 config. Keys must never appear in git.

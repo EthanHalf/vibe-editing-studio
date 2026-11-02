@@ -57,6 +57,10 @@ Make a thumbnail for it: headline "CLAUDE EDITS MY VIDEOS", accent word EDITS
 Or from the terminal:
 
 ```bash
+# caption a clip, fully offline (local Whisper, no key):
+bin/caption-local take.mp4 take_captioned.mp4 --preset brand/presets/captions-phrase.json
+
+# covers from a frame:
 python3 skills/thumbnail/scripts/thumb.py frame --video take.mp4 --time 4.0 --out frame.png
 python3 skills/thumbnail/scripts/thumb.py make --image frame.png \
     --headline "CLAUDE EDITS MY VIDEOS" --accent EDITS \
@@ -87,15 +91,16 @@ Test status (verified in this repo's sandbox, Linux):
   background removal on a real (public-domain) photo, frame extraction
   from video, both brand presets, both output sizes, and the error path.
   Final renders visually checked.
-- Caption pipeline: tested end-to-end offline - local faster-whisper
-  transcription (no API key), text normalization, style stream, burn,
-  and the caption/audio sync gate all ran and passed on a sample clip,
-  in both the default word-by-word look and the phrase-chunk preset
+- Caption pipeline: tested end-to-end offline - `bin/caption-local`
+  (local faster-whisper transcription, no API key -> text normalization
+  -> deterministic style -> burn) ran on a sample clip and the
+  caption/audio sync gate passed with 0 mismatches, in both the default
+  word-by-word look and the phrase-chunk preset
   (`brand/presets/captions-phrase.json`).
-- The all-in-one `spice_caption.py` wrapper stops without an
-  AssemblyAI or Groq key; the key-free route is the documented manual
-  chain (local whisper -> spice_format -> generate_spice), which is what
-  was tested.
+- The upstream one-command `spice_caption.py` wrapper stops without an
+  AssemblyAI or Groq key and was not run; `bin/caption-local` is the
+  supported key-free route. The `/edit` orchestration defaults to
+  AssemblyAI ingest and has not been run.
 - Not yet run: a clean install on a fresh machine, macOS (upstream docs
   target macOS via Homebrew), the full `/edit` orchestration with
   silence cutting and reframing, and the `caption_sync_gate.py --clip`

@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""Key-free captioning: local Whisper -> text spec -> deterministic style -> burn.
+
+The offline counterpart to the upstream one-command wrapper (which requires an
+AssemblyAI or Groq key). This chain needs no API key: transcription runs on
+local faster-whisper and styling uses a deterministic stream (no emphasis
+picks); a Claude Code agent can re-render with a hand-authored style stream
+later without re-transcribing.
+
+Usage:
+  bin/caption-local <input.mp4> <output.mp4> [--preset PRESET.json] [--work DIR]
+
+Defaults to the upstream spice look. For natural phrase chunks instead of
+word-by-word pops: --preset brand/presets/captions-phrase.json
+"""
+import argparse, hashlib, json, os, subprocess, sys, tempfile
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+CC = ROOT / "plugins/vibe-editing/skills/caption-clips/scripts"
+LFI = ROOT / "plugins/vibe-editing/skills/long-form-ingest/scripts"
+
+def run(cmd, label):
+    print(f"[caption-local] {label}...", flush=True)
+    r = subprocess.run([sys.executable, *map(str, cmd)])
+    if r.returncode != 0:
+        sys.exit(f"[caption-local] {label} failed (exit {r.returncode})")
+
+def main():
+    ap = argparse.ArgumentParser(description="Key-free local captioning (offline Whisper).")
+    ap.add_argument("input", type=Path)
+    ap.add_argument("output", type=Path)
+    ap.add_argument("--preset", type=Path, default=ROOT / "plugins/vibe-editing/skills/caption-clips/presets/spice.json")
+    ap.add_argument("--work", type=Path, default=None)
+    a = ap.parse_args()
+    if not a.input.is_file():
+        sys.exit(f"[caption-local] input not found: {a.input}")
+    if not a.preset.is_file():
+        sys.exit(f"[caption-local] preset not found: {a.preset}")
+    work = a.work or Path(tempfile.mkdtemp(prefix="caption-local_"))
+    work.mkdir(parents=True, exist_ok=True)
+    words, norm, stream, ass = (work / f for f in ("words.json", "spice_norm.json", "director_stream.json", "subs.ass"))
+
+    run([LFI / "transcribe_local.py", a.input, "--out", words], "transcribe (local whisper)")
+    run([CC / "spice_format.py", "--words", words, norm], "format caption text")
+    sha = hashlib.sha256(norm.read_bytes()).hexdigest()
+    stream.write_text(json.dumps({"words_sha256": sha, "words": {}, "voice_spans": []}, indent=1))
+    run([CC / "generate_spice.py", norm, "--preset", a.preset, "--style", stream,
+         "--out", ass, "--burn", a.input, "--burn-out", a.output], "render + burn")
+    print(f"[caption-local] done -> {a.output}  (work files: {work})", flush=True)
+
+if __name__ == "__main__":
+    main()
