@@ -22,6 +22,14 @@ editing plugin's config as your own style develops.
 - Remove obvious background noise (chair squeaks, hum) when the pipeline
   flags it. No background music under talking-head content unless the
   creator asks for it.
+- When the creator does ask for sound: a quiet, rhythmic bed with forward
+  momentum (not a sleepy ambient pad), sparse SFX only where a visual
+  moment motivates them, and no arbitrary startup stingers.
+- First word lands almost immediately (under ~0.2s of leading quiet),
+  pauses over ~0.5s get tightened, stutters come out.
+- Full direction, the ffmpeg ducking recipe and the hearing-gap QA rule
+  live in `docs/AUDIO.md`. Signal checks are not listening - a human or a
+  hearing tool signs off the final mix.
 
 ## QA before anything ships
 
@@ -57,5 +65,15 @@ If any check fails, fix and re-render before showing the result.
 ## Claims and sound
 
 - If a video says a tool did something, show that literal screen recording -
-  no stand-in footage for product claims.
+  no stand-in footage presented as the real thing. Recreated or time-lapse
+  demo sequences are a creative choice the creator signs off on; don't
+  present invented run times, download sizes or checksums as a verified
+  real run.
+- When a video names a product, prefer its actual official logo from the
+  company's own brand assets over plain name cards or look-alike
+  approximations. If you can't verify an official asset, flag it instead
+  of substituting silently.
+- Distribute graphics across the whole video instead of clustering them in
+  one segment, and make product shots or thumbnails fill their frame in
+  device mockups.
 - No background music under talking-head content by default.
