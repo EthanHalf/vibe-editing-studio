@@ -10,9 +10,9 @@ is provisioned once rather than asking each editor to create a token. Do not inv
 This interview is not required for read-only questions or work on the repository's code/docs.
 
 Do the setup work for the user. Secrets go into private hidden prompts or private local files,
-never chat, command arguments, tracked files, screenshots or logs. The deliberately bundled
-read-only editorial-brain token in `config/editorial-brain.json` is the sole shared-access exception;
-use it automatically and never substitute a database-admin or personal provider credential. Mark configured, verified,
+never chat, command arguments, tracked files, screenshots or logs. No credential ships with this repo.
+If `config/editorial-brain.json` is absent, mark live editorial-brain reads unavailable and use the
+bundled reference documents; never substitute a database-admin or personal provider credential. Mark configured, verified,
 pending and skipped precisely. Missing team bridges/playbooks are pending dependencies; an
 accepted API key is not proof the native editing pipeline is installed.
 

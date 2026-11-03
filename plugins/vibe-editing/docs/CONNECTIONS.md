@@ -50,12 +50,12 @@ The repo includes the editing playbooks under `skills/edit/references/`, editori
 documents and source transcript, makes the editorial choices itself, and writes the cut/style
 artifacts. No separate LLM API key or second Claude installation is required for those decisions.
 
-The dedicated read-only team gateway is configured in `config/editorial-brain.json`. The agent
+The optional read-only team gateway is configured in `config/editorial-brain.json`, which does not
+ship with this repo - see `config/editorial-brain.example.json`. Until it is configured the gateway is
+unavailable and the agent uses the bundled reference documents instead. When configured, the agent
 uses `editorial_brain.py --format <format> --out <project>/10_WORK/brain/context.v1.json`, then reads
-the full returned documents. The dedicated read-only token is included in that connection file, so a fresh download
-works without a local credential file or token prompt. Do not ask an editor for a Supabase key
-or a separate brain token. This deliberately shared token authenticates only the document-reading
-gateway; it is not a database-admin key. Personal media/delivery keys remain private. If a live
+the full returned documents. Do not ask an editor for a Supabase key; personal media/delivery keys
+remain private. If a live
 read fails, label bundled references as bundled guidance rather than claiming a live read.
 The active model remains the editor whichever document source is used.
 
@@ -146,8 +146,7 @@ remains supported and ignored by Git; the distributed file is now `keys.env.exam
 
 Frame/Monday use their dedicated private JSON files. YouTube and rclone own their OAuth token
 files. Personal/provider secrets must never be pasted into chat, committed, or hardcoded in MCP
-configuration. The deliberately shared read-only team token in `config/editorial-brain.json` is
-the sole bundled-access exception; it grants document-reading access only. For MCP servers that require an environment variable, pass it through the host's
+configuration. No credential files ship with this repo. For MCP servers that require an environment variable, pass it through the host's
 private environment and restart that server after saving; Python's key loader cannot update an
 already-running MCP process.
 

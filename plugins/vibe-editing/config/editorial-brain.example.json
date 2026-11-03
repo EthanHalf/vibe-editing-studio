@@ -1,0 +1,7 @@
+{
+  "schema": "<schema name supplied with your kit access>",
+  "function_url": "https://<project-ref>.supabase.co/functions/v1/<function-name>",
+  "project_ref": "<project-ref>",
+  "credential_file": "~/.config/vibe-editing/editorial-brain-credential",
+  "token": ""
+}
