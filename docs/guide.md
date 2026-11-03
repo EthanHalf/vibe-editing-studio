@@ -10,9 +10,9 @@ instructions your coding assistant follows during setup.)
 
 ## Where it lives
 
-Private repository: **https://github.com/EthanHalf/vibe-editing-studio**
+Public repository: **https://github.com/EthanHalf/vibe-editing-studio**
 
-It is visible only to you. Clone it with your own GitHub login:
+Anyone with the link can clone it - no GitHub login needed:
 
 ```bash
 git clone https://github.com/EthanHalf/vibe-editing-studio.git
