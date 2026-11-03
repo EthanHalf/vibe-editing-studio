@@ -1,6 +1,6 @@
 # Attribution
 
-Vibe Code Studio is built on top of **Vibe Editing**
+Vibe Editing Studio is built on top of **Vibe Editing**
 (https://github.com/maddexritter-rgb/vibe-editing), an open-source Claude Code
 plugin for short-form video editing, used under the MIT License. The original
 MIT license text and copyright notice are retained in `LICENSE`.

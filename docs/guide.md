@@ -1,8 +1,8 @@
-# Vibe Code Studio - the guide
+# Vibe Editing Studio - the guide
 
 *Working name - not finalized.*
 
-Vibe Code Studio is a private kit that turns raw talking-head footage into
+Vibe Editing Studio is a private kit that turns raw talking-head footage into
 captioned vertical clips, and makes the covers to go with them. It runs on
 your own machine, inside Claude Code. This guide is for you, the person
 using it. (A separate file, `ONBOARDING.md`, carries the step-by-step
@@ -10,17 +10,17 @@ instructions your coding assistant follows during setup.)
 
 ## Where it lives
 
-Private repository: **https://github.com/EthanHalf/vibe-code-studio**
+Private repository: **https://github.com/EthanHalf/vibe-editing-studio**
 
 It is visible only to you. Clone it with your own GitHub login:
 
 ```bash
-git clone https://github.com/EthanHalf/vibe-code-studio.git
-cd vibe-code-studio
+git clone https://github.com/EthanHalf/vibe-editing-studio.git
+cd vibe-editing-studio
 ./setup.sh
 ```
 
-Then open the folder in Claude Code and say: **Set up Vibe Code Studio for
+Then open the folder in Claude Code and say: **Set up Vibe Editing Studio for
 me.** The assistant walks you through keys, brand, and a sample run.
 
 ## The two things it does

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Vibe Code Studio - thumbnail & cover builder.
+"""Vibe Editing Studio - thumbnail & cover builder.
 
 Original work for this kit. Turns a photo (or a frame pulled from a video)
 plus a headline into platform-ready covers: YouTube 1280x720 and vertical

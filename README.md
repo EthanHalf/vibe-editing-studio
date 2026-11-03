@@ -1,4 +1,4 @@
-# Vibe Code Studio
+# Vibe Editing Studio
 
 Turn raw talking-head footage into finished, captioned vertical clips - and
 make the covers to go with them - from one Claude Code setup.
@@ -33,14 +33,14 @@ The kit itself is free and open source (MIT). Running it is not fully free:
 ## Quickstart
 
 ```bash
-git clone https://github.com/EthanHalf/vibe-code-studio.git && cd vibe-code-studio
+git clone https://github.com/EthanHalf/vibe-editing-studio.git && cd vibe-editing-studio
 ./setup.sh                        # installs dependencies, runs a health check
 ```
 
 Then open the folder in Claude Code and say:
 
 ```
-Set up Vibe Code Studio for me
+Set up Vibe Editing Studio for me
 ```
 
 The agent walks you through brand, keys, and a **sample project** - a

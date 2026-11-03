@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# One-command setup for Vibe Code Studio.
+# One-command setup for Vibe Editing Studio.
 set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
 PLUG="$DIR/plugins/vibe-editing"
-echo "== Vibe Code Studio setup =="
+echo "== Vibe Editing Studio setup =="
 if command -v brew >/dev/null 2>&1; then
   echo "Installing system tools via Homebrew (ffmpeg, tesseract, yt-dlp, rclone)..."
   brew install ffmpeg tesseract yt-dlp rclone || true
@@ -26,6 +26,6 @@ cd "$DIR"
   echo "!! Thumbnail selftest failed - re-run after fixing the error above."
 echo ""
 echo "Next steps:"
-echo "  1) Open this repo in Claude Code and say: Set up Vibe Code Studio for me"
+echo "  1) Open this repo in Claude Code and say: Set up Vibe Editing Studio for me"
 echo "  2) The agent follows ONBOARDING.md: keys (local only), your brand preset,"
 echo "     then a full sample run before you trust it with real footage."
