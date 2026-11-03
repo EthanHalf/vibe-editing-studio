@@ -81,7 +81,9 @@ Your brand is a preset file, not something you're stuck with. Copy
 - `python3 plugins/vibe-editing/doctor.py` checks the editing pipeline's
   health.
 
-Always look at the rendered cover and the edited clip before posting. Your
+Always look at the rendered cover and the edited clip before posting - and
+listen to it: signal checks are not hearing, so give the final audio a real
+listen (see `docs/AUDIO.md` for the sound direction and QA rule). Your
 originals are never modified: the kit only reads them and writes new files
 to an output folder you choose.
 
